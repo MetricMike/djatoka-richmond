@@ -66,7 +66,7 @@ var IIPMooViewer = new Class({
 
   Extends: Events,
 
-  version: '2.0',
+  version: '2.1',
 
 
   /* Constructor - see documentation for options
@@ -1012,7 +1012,7 @@ var IIPMooViewer = new Class({
       'events': {
 	click: function(){ this.fade('out'); }
       },
-      'html': '<div><div><h2><a href="http://iipimage.sourceforge.net"><img src="'+this.prefix+'iip.32x32.png"/></a>IIPMooViewer</h2>IIPImage HTML5 Ajax High Resolution Image Viewer - Version '+this.version+'<br/><ul><li>'+IIPMooViewer.lang.navigate+'</li><li>'+IIPMooViewer.lang.zoomIn+'</li><li>'+IIPMooViewer.lang.zoomOut+'</li><li>'+IIPMooViewer.lang.rotate+'</li><li>'+IIPMooViewer.lang.fullscreen+'<li>'+IIPMooViewer.lang.annotations+'</li><li>'+IIPMooViewer.lang.navigation+'</li></ul><br/>'+IIPMooViewer.lang.more+' <a href="http://iipimage.sourceforge.net">http://iipimage.sourceforge.net</a></div></div>'
+      'html': '<div><div><h2><a href="http://iipimage.sourceforge.net"><img src="'+this.prefix+'favicon.32x32.png"/></a>Djatoka Viewer 2.1</h2>Djatoka HTML5 Ajax High Resolution Image Viewer - Version '+this.version+'<br/><ul><li>'+IIPMooViewer.lang.navigate+'</li><li>'+IIPMooViewer.lang.zoomIn+'</li><li>'+IIPMooViewer.lang.zoomOut+'</li><li>'+IIPMooViewer.lang.rotate+'</li><li>'+IIPMooViewer.lang.fullscreen+'<li>'+IIPMooViewer.lang.annotations+'</li><li>'+IIPMooViewer.lang.navigation+'</li></ul><br/>'+IIPMooViewer.lang.more+' <a href="http://github.com/MetricMike/djatoka-richmond">Djatoka Viewer on GitHub</a></div></div>'
     }).inject( this.container );
 
     // Create our main window target div, add our events and inject inside the frame
@@ -1190,7 +1190,7 @@ var IIPMooViewer = new Class({
 
     // Add our logo and a tooltip explaining how to use the viewer
     var info = new Element( 'img', {
-      'src': this.prefix+'iip.32x32.png',
+      'src': this.prefix+'favicon.32x32.png',
       'class': 'logo',
       'title': IIPMooViewer.lang.help,
       'events': {
