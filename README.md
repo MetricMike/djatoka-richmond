@@ -88,7 +88,7 @@ Copy `adore-djatoka.war` to the Tomcat installation:
 
 **Step 4: Configure Environment Variables and Tomcat to Run as a Service**  
 
-These scripts will set `JAVA_HOME`, `CATALINA_HOME`, and 'DJATOKA_HOME' on after logging in, and will let us run Tomcat using `/etc/init.d/tomcat start|stop|restart`.  
+These scripts will set `JAVA_HOME`, `CATALINA_HOME`, and `DJATOKA_HOME` on after logging in, and will let us run Tomcat using `/etc/init.d/tomcat start|stop|restart`.  
 
 Switch to the `/etc` directory:  
 

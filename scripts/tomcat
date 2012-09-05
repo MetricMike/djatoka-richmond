@@ -2,12 +2,13 @@
 # description: Tomcat Start Stop Restart
 # processname: tomcat
 # chkconfig: 234 20 80
-CATALINA_HOME=/usr/share/apache-tomcat-7.0.29
+DIR="$( cd "$( dirname "$0" )" && cd .. && pwd)"
+export DIR
+CATALINA_HOME=$DIR/apache-tomcat
 export CATALINA_HOME
-DJATOKA_HOME=/usr/share/adore-djatoka-1.1
+DJATOKA_HOME=$DIR/adore-djatoka
 export DJATOKA_HOME
 
-DJATOKA_HOME=/usr/share/adore-djatoka-1.1
 LIBPATH=$DJATOKA_HOME/lib
 
 if [ `uname` = 'Linux' ] ; then
