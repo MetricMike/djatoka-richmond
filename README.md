@@ -1,19 +1,16 @@
 
 [Based on David Ghedini's "Install Tomcat 7 on CentOS, RHEL, or Fedora" blogpost.](http://www.davidghedini.com/pg/entry/install_tomcat_7_on_centos)
 
-## Install Djatoka Image Server and Viewer RHEL : Michael Weigle  
-###### Monday Aug 13, 2012  
+## Install Djatoka Image Server and Viewer on RHEL : Michael Weigle  
+###### Tuesday Aug 28, 2012  
 
 This tutorial will cover installing and basic configuration of:  
 
- * Java 7 Update 5  
  * Tomcat 7.0.29  
  * Djatoka Image Server 1.1  
  * Djatoka Viewer 2.1  
 
-Finally, we will look at running Tomcat on port 80 as well as some strategies for running Tomcat behind Apache.  
-
-If you are using a different release of the programs above, simply change the file names below accordingly.  
+This tutorial assumes that you already have a JDK installed and that your JAVA_HOME points to it. If you are using a different release of the programs above, simply change the file names below accordingly.  
 
 **Step 1: Download and verify the files**  
 
