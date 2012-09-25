@@ -2,7 +2,7 @@
 # description: Tomcat Start Stop Restart
 # processname: tomcat
 # chkconfig: 234 20 80
-DIR="$( cd "$( dirname "$0" )" && cd .. && pwd)"
+DIR=/usr/share
 export DIR
 CATALINA_HOME=$DIR/apache-tomcat
 export CATALINA_HOME
