@@ -7,7 +7,7 @@ echo "Enter the absolute location of djatoka-richmond's parent directory... [/us
 read DIR
 if [[ $DIR != '' ]]; then
 	echo "DIR is $DIR"
-	`sed -e "s:^.*\(DIR = \)\('/usr/share'\):\1$DIR:" tomcat`
+	`sed -e "s:^.*\(DIR = \)\('/usr/share'\):\1$DIR:" -i tomcat`
 else
 	DIR=/usr/share
 	echo "DIR = $DIR"
@@ -18,7 +18,7 @@ echo "Enter the runlevels tomcat should use... [234]"
 read RUNLEVELS
 if [[ $RUNLEVELS != '' ]]; then
 	echo "RUNLEVELS are $RUNLEVELS"
-	`sed -e "s#^.*\(chkconfig: \)\(\"234\"\)#\1$RUNLEVELS#" tomcat`
+	`sed -e "s#^.*\(chkconfig: \)\(\"234\"\)#\1$RUNLEVELS#" -i tomcat`
 else
 	RUNLEVELS=234
 	echo "RUNLEVELS = $RUNLEVELS"
@@ -30,18 +30,18 @@ echo "Enter the HTTP port tomcat should use... [8080]"
 read PORT1
 if [[ $PORT1 != '' ]]; then
 	echo "HTTP port = $PORT1"
-	`sed -e "s:^.*\(port=\)\(\"8080\"\):\1\"$PORT1\":" ../apache-tomcat/conf/server.xml`
+	`sed -e "s:^.*\(port=\)\(\"8080\"\):\1\"$PORT1\":" -i ../apache-tomcat/conf/server.xml`
 else
 	PORT1=8080
 	echo "HTTP port = $PORT1"
 fi
 
 echo
-echo "Enter the HTTP redirect port tomcat should use... [8443]"
+echo "Enter the HTTP redirect port tomcat should use... -i [8443]"
 read PORT2
 if [[ $PORT2 != '' ]]; then
 	echo "HTTP redirect port = $PORT2"
-	`sed -e "s:^.*\(redirectPort=\)\(\"8443\"\):\1\"$PORT2\":" ../apache-tomcat/conf/server.xml`
+	`sed -e "s:^.*\(redirectPort=\)\(\"8443\"\):\1\"$PORT2\":" -i ../apache-tomcat/conf/server.xml`
 else
 	PORT2=8443
 	echo "HTTP redirect port = $PORT2"
@@ -52,7 +52,7 @@ echo "Enter the AJP port tomcat should use... [8009]"
 read PORT3
 if [[ $PORT3 != '' ]]; then
 	echo "AJP port = $PORT3"
-	`sed -e "s:^.*\(port=\)\(\"8009\"\):\1\"$PORT3\":" ../apache-tomcat/conf/server.xml`
+	`sed -e "s:^.*\(port=\)\(\"8009\"\):\1\"$PORT3\":" -i ../apache-tomcat/conf/server.xml`
 else
 	PORT3=8009
 	echo "AJP port = $PORT3"
@@ -78,6 +78,4 @@ echo "Copying tomcat to /etc/init.d/"
 `cd /etc/init.d`
 echo
 echo "Registering tomcat with chkconfig"
-`chmod 755 tomcat`
-`chkconfig --add tomcat`
-`chkconfig --level $RUNLEVELS`
+`chkconfig --add "tomcat"`
