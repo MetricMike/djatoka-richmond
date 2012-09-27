@@ -21,46 +21,15 @@ Clone repository to `/usr/share`: (you can clone it to another directory if you 
 
 This should give you Tomcat, Djatoka, and the Djatoka Viewer
 
-*Step 2a: Adjust Tomcat's Directory Pointer (Optional)*
+*Step 2a: Run the configuration script*
 
-The default installation of this repository assumes that you have cloned it to /usr/share.
-If this is not true, you need to change the `DIR` variable in the `tomcat` script.  
+Execute the ./config script and follow the prompts.
 
-*Step 2b: Adjust Tomcat Ports (Optional)*  
-
-The default Tomcat installation uses ports 8080, 8443, and 8009.
-You can change these port numbers in `/usr/share/apache-tomcat-7.0.29/conf/server.xml`
-
-*Step 2c: Adjust Djatoka Settings (Optional)*
-
-The default Djatoka assumes connectivity from `localhost:8080`.
-You can change this by adjusting the server variable in `/usr/share/djatoka/viewer.html`
-
-*Step 2d: Adjust Permissions*
-
-GitHub is not respecting permissions (or Windows reset them all), so you'll have to go through and change them manually.
-THIS IS BAD PRACTICE, but the following will "fix" permissions problem.
-
-    [root@server djatoka-richmond]# chmod -R 755 *.*
-
-**Step 3: Configure Tomcat to Run as a Service**  
-
-This will let Tomcat run using `/etc/init.d/tomcat start|stop|restart`.
-
-Switch to the `/etc/init.d` directory:  
-
-    [root@server etc]# cd /init.d
-    [root@server init.d]#
-
-Make `tomcat` executable and register it with the `chkconfig` utility:  
-
-    [root@server init.d]# chmod 755 tomcat
-    [root@server init.d]# chkconfig --add tomcat
-    [root@server init.d]# chkconfig --level 234 tomcat on
-
-Restart your session by logging in and out so that the scripts can run once.  
+Restart your session by logging in and out to ensure that tomcat gets registered and starts correctly.  
 
 **Step 4: Verify Java, Djatoka, and Tomcat Installation.**  
+
+Check `localhost:8080/adore-djatoka/index.html` to test Djatoka's functionality.
 
 Tomcat's startup script runs through Djatoka, so checking to make sure that Tomcat is working will also verify Djatoka and Java.  
 
@@ -98,5 +67,3 @@ Tomcat's startup script runs through Djatoka, so checking to make sure that Tomc
     Using CLASSPATH:       /usr/share/apache-tomcat-7.0.29/bin/bootstrap.jar:/usr/share/apache-tomcat-7.0.29/bin/tomcat-juli.jar
 
 We should review the Catalina.out log located at `/usr/share/djatoka-richmond/apache-tomcat-7.0.29/logs/catalina.out` and check for any errors.  
-    
-Finally, check `localhost:8080/adore-djatoka/index.html` to test Djatoka's functionality.
