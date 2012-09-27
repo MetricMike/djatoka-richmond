@@ -21,13 +21,13 @@ Clone repository to `/usr/share`: (you can clone it to another directory if you 
 
 This should give you Tomcat, Djatoka, and the Djatoka Viewer
 
-*Step 2a: Run the configuration script*
+**Step 2: Run the configuration script**
 
 Execute the ./config script and follow the prompts.
 
 Restart your session by logging in and out to ensure that tomcat gets registered and starts correctly.  
 
-**Step 4: Verify Java, Djatoka, and Tomcat Installation.**  
+**Step 3: Verify Java, Djatoka, and Tomcat Installation.**  
 
 Check `localhost:8080/adore-djatoka/index.html` to test Djatoka's functionality.
 
