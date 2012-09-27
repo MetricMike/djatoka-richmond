@@ -5,6 +5,7 @@
 echo
 echo "Enter the absolute location of djatoka-richmond's parent directory... [/usr/share]"
 read dir
+echo "DIR is $dir"
 if [[ $dir != '' ]]; then
 	`sed -e "s:^.*\(DIR = \)\('/usr/share'\):\1$dir:" tomcat`
 fi
@@ -12,6 +13,7 @@ fi
 #Adjust tomcat's runlevels for chkconfig and /etc/init.d
 echo "Enter the runlevels tomcat should use... [234]"
 read runlevels
+echo "runlevels are $runlevels"
 if [[ $runlevels != '' ]]; then
 	`sed -e "s#^.*\(chkconfig: \)\(\"234\"\)#\1$runlevels#" tomcat`
 fi
@@ -20,6 +22,7 @@ fi
 echo
 echo "Enter the HTTP port tomcat should use... [8080]"
 read port1
+echo "HTTP port is $port1"
 if [[ $port1 != '' ]]; then
 	`sed -e "s:^.*\(port=\)\(\"8080\"\):\1\"$port1\":" ../apache-tomcat/conf/server.xml`
 fi
@@ -27,6 +30,7 @@ fi
 echo
 echo "Enter the HTTP redirect port tomcat should use... [8443]"
 read port2
+echo "HTTP redirect port is $port2"
 if [[ $port2 != '' ]]; then
 	`sed -e "s:^.*\(redirectPort=\)\(\"8443\"\):\1\"$port2\":" ../apache-tomcat/conf/server.xml`
 fi
@@ -34,6 +38,7 @@ fi
 echo
 echo "Enter the AJP port tomcat should use... [8009]"
 read port3
+echo "AJP port is $port3"
 if [[ $port3 != '' ]]; then
 	`sed -e "s:^.*\(port=\)\(\"8009\"\):\1\"$port3\":" ../apache-tomcat/conf/server.xml`
 fi
@@ -43,6 +48,7 @@ fi
 echo
 echo "Enter the public address of the djatoka server... [localhost]"
 read server
+echo "public address is $server"
 if [[ $server != '' ]]; then
 	`sed -e "s#^.*\(server = 'http://\)\(localhost:8080)#\1\"$server:$port1\"#" ../apache-tomcat/webapps/djatoka/viewer.html`
 fi
