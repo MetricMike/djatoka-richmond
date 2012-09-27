@@ -37,7 +37,7 @@ else
 fi
 
 echo
-echo "Enter the HTTP redirect port tomcat should use... -i [8443]"
+echo "Enter the HTTP redirect port tomcat should use... [8443]"
 read PORT2
 if [[ $PORT2 != '' ]]; then
 	echo "HTTP redirect port = $PORT2"
