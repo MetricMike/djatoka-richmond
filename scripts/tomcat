@@ -4,9 +4,9 @@
 # chkconfig: 234 20 80
 DIR=/usr/share
 export DIR
-CATALINA_HOME=$DIR/apache-tomcat
+CATALINA_HOME=$DIR/djatoka-richmond/apache-tomcat
 export CATALINA_HOME
-DJATOKA_HOME=$DIR/adore-djatoka
+DJATOKA_HOME=$DIR/djatoka-richmond/adore-djatoka
 export DJATOKA_HOME
 
 LIBPATH=$DJATOKA_HOME/lib
