@@ -65,11 +65,13 @@ echo "Enter the public address of the djatoka server... [localhost]"
 read server
 if [[ $server != '' ]]; then
 	echo "public address is $SERVER"
-	`sed -i "s|localhost:8080|$SERVER:$PORT1|g" ../apache-tomcat/webapps/djatoka/viewer.html`
 else
 	SERVER=localhost
 	echo "public address is $SERVER"
 fi
+
+`sed -i "s|localhost:8080|$SERVER:$PORT1|g" ../apache-tomcat/webapps/djatoka/viewer.html`
+
 
 #copy ../scripts/tomcat to /etc/init.d and register with chkconfig
 echo
