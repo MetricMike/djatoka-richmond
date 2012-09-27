@@ -7,7 +7,7 @@ echo "Enter the absolute location of djatoka-richmond's parent directory... [/us
 read DIR
 if [[ $DIR != '' ]]; then
 	echo "DIR is $DIR"
-	`sed -e "s:^.*\(DIR = \)\('/usr/share'\):\1$DIR:" -i tomcat`
+	`sed -e "5 s_^DIR=.*_^DIR=$DIR_" -i tomcat`
 else
 	DIR=/usr/share
 	echo "DIR = $DIR"
