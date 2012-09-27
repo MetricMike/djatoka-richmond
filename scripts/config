@@ -7,7 +7,7 @@ echo "Enter the absolute location of djatoka-richmond's parent directory... [/us
 read DIR
 if [[ $DIR != '' ]]; then
 	echo "DIR is $DIR"
-	`sed -i "s_^DIR=\/usr\/share_^DIR=$DIR_" tomcat`
+	`sed -i "s|DIR=\/usr\/share|DIR=$DIR|g" tomcat`
 else
 	DIR=/usr/share
 	echo "DIR = $DIR"
@@ -18,7 +18,7 @@ echo "Enter the runlevels tomcat should use... [234]"
 read RUNLEVELS
 if [[ $RUNLEVELS != '' ]]; then
 	echo "RUNLEVELS are $RUNLEVELS"
-	`sed -e "s#^.*\(chkconfig: \)\(\"234\"\)#\1$RUNLEVELS#" -i tomcat`
+	`sed -i "s|234|$RUNLEVELS|" tomcat`
 else
 	RUNLEVELS=234
 	echo "RUNLEVELS = $RUNLEVELS"
@@ -30,7 +30,7 @@ echo "Enter the HTTP port tomcat should use... [8080]"
 read PORT1
 if [[ $PORT1 != '' ]]; then
 	echo "HTTP port = $PORT1"
-	`sed -e "s:^.*\(port=\)\(\"8080\"\):\1\"$PORT1\":" -i ../apache-tomcat/conf/server.xml`
+	`sed -i "s|8080|$PORT1|g" ../apache-tomcat/conf/server.xml`
 else
 	PORT1=8080
 	echo "HTTP port = $PORT1"
@@ -41,7 +41,7 @@ echo "Enter the HTTP redirect port tomcat should use... -i [8443]"
 read PORT2
 if [[ $PORT2 != '' ]]; then
 	echo "HTTP redirect port = $PORT2"
-	`sed -e "s:^.*\(redirectPort=\)\(\"8443\"\):\1\"$PORT2\":" -i ../apache-tomcat/conf/server.xml`
+	`sed -i "s|8443|$PORT2|g" ../apache-tomcat/conf/server.xml`
 else
 	PORT2=8443
 	echo "HTTP redirect port = $PORT2"
@@ -52,7 +52,7 @@ echo "Enter the AJP port tomcat should use... [8009]"
 read PORT3
 if [[ $PORT3 != '' ]]; then
 	echo "AJP port = $PORT3"
-	`sed -e "s:^.*\(port=\)\(\"8009\"\):\1\"$PORT3\":" -i ../apache-tomcat/conf/server.xml`
+	`sed -i "s|8009|$PORT3|g" ../apache-tomcat/conf/server.xml`
 else
 	PORT3=8009
 	echo "AJP port = $PORT3"
@@ -65,7 +65,7 @@ echo "Enter the public address of the djatoka server... [localhost]"
 read server
 if [[ $server != '' ]]; then
 	echo "public address is $SERVER"
-	`sed -e "s#^.*\(server = 'http://\)\(localhost:8080)#\1\"$SERVER:$PORT1\"#" ../apache-tomcat/webapps/djatoka/viewer.html`
+	`sed -i "s|localhost:8080|$SERVER:$PORT1|g" ../apache-tomcat/webapps/djatoka/viewer.html`
 else
 	SERVER=localhost
 	echo "public address is $SERVER"
