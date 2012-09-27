@@ -4,43 +4,58 @@
 #Get directory pointer to djatoka-richmond and assign in ../scripts/tomcat
 echo
 echo "Enter the absolute location of djatoka-richmond's parent directory... [/usr/share]"
-read dir
-echo "DIR is $dir"
-if [[ $dir != '' ]]; then
-	`sed -e "s:^.*\(DIR = \)\('/usr/share'\):\1$dir:" tomcat`
+read DIR
+if [[ $DIR != '' ]]; then
+	echo "DIR is $DIR"
+	`sed -e "s:^.*\(DIR = \)\('/usr/share'\):\1$DIR:" tomcat`
+else
+	DIR=/usr/share
+	echo "DIR = $DIR"
 fi
 
 #Adjust tomcat's runlevels for chkconfig and /etc/init.d
 echo "Enter the runlevels tomcat should use... [234]"
-read runlevels
-echo "runlevels are $runlevels"
-if [[ $runlevels != '' ]]; then
-	`sed -e "s#^.*\(chkconfig: \)\(\"234\"\)#\1$runlevels#" tomcat`
+read RUNLEVELS
+if [[ $RUNLEVELS != '' ]]; then
+	echo "RUNLEVELS are $RUNLEVELS"
+	`sed -e "s#^.*\(chkconfig: \)\(\"234\"\)#\1$RUNLEVELS#" tomcat`
+else
+	RUNLEVELS=234
+	echo "RUNLEVELS = $RUNLEVELS"
 fi
 
 #Get tomcat ports and assign in ../apache-tomcat/conf/server.xml
 echo
 echo "Enter the HTTP port tomcat should use... [8080]"
-read port1
-echo "HTTP port is $port1"
-if [[ $port1 != '' ]]; then
-	`sed -e "s:^.*\(port=\)\(\"8080\"\):\1\"$port1\":" ../apache-tomcat/conf/server.xml`
+read PORT1
+if [[ $PORT1 != '' ]]; then
+	echo "HTTP port = $PORT1"
+	`sed -e "s:^.*\(port=\)\(\"8080\"\):\1\"$PORT1\":" ../apache-tomcat/conf/server.xml`
+else
+	PORT1=8080
+	echo "HTTP port = $PORT1"
 fi
 
 echo
 echo "Enter the HTTP redirect port tomcat should use... [8443]"
-read port2
-echo "HTTP redirect port is $port2"
-if [[ $port2 != '' ]]; then
-	`sed -e "s:^.*\(redirectPort=\)\(\"8443\"\):\1\"$port2\":" ../apache-tomcat/conf/server.xml`
+read PORT2
+if [[ $PORT2 != '' ]]; then
+	echo "HTTP redirect port = $PORT2"
+	`sed -e "s:^.*\(redirectPort=\)\(\"8443\"\):\1\"$PORT2\":" ../apache-tomcat/conf/server.xml`
+else
+	PORT2=8443
+	echo "HTTP redirect port = $PORT2"
 fi
 
 echo
 echo "Enter the AJP port tomcat should use... [8009]"
-read port3
-echo "AJP port is $port3"
-if [[ $port3 != '' ]]; then
-	`sed -e "s:^.*\(port=\)\(\"8009\"\):\1\"$port3\":" ../apache-tomcat/conf/server.xml`
+read PORT3
+if [[ $PORT3 != '' ]]; then
+	echo "AJP port = $PORT3"
+	`sed -e "s:^.*\(port=\)\(\"8009\"\):\1\"$PORT3\":" ../apache-tomcat/conf/server.xml`
+else
+	PORT3=8009
+	echo "AJP port = $PORT3"
 fi
 
 #Get public address of server and assign to server
@@ -48,9 +63,12 @@ fi
 echo
 echo "Enter the public address of the djatoka server... [localhost]"
 read server
-echo "public address is $server"
 if [[ $server != '' ]]; then
-	`sed -e "s#^.*\(server = 'http://\)\(localhost:8080)#\1\"$server:$port1\"#" ../apache-tomcat/webapps/djatoka/viewer.html`
+	echo "public address is $SERVER"
+	`sed -e "s#^.*\(server = 'http://\)\(localhost:8080)#\1\"$SERVER:$PORT1\"#" ../apache-tomcat/webapps/djatoka/viewer.html`
+else
+	SERVER=localhost
+	echo "public address is $SERVER"
 fi
 
 #copy ../scripts/tomcat to /etc/init.d and register with chkconfig
@@ -62,4 +80,4 @@ echo
 echo "Registering tomcat with chkconfig"
 `chmod 755 tomcat`
 `chkconfig --add tomcat`
-`chkconfig --level $runlevels`
+`chkconfig --level $RUNLEVELS`
